@@ -810,3 +810,147 @@ select:focus {
   }
 }
 
+/* ================= MOBILE GLOBAL ================= */
+
+@media (max-width: 1024px) {
+  .grid {
+    flex-direction: column;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+  }
+
+  .section {
+    padding: 100px 20px;
+  }
+}
+
+/* ================= MOBILE 768px ================= */
+
+@media (max-width: 768px) {
+
+  header {
+    padding: auto;
+    margin: auto;
+    
+  }
+
+  .container {
+    margin: auto;
+    padding: 0 10px;
+  }
+
+  /* NAV */
+
+  .nav {
+    margin: auto;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* HERO */
+
+  .hero {
+    padding: 100px 20px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+
+  .hero-services {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* CARDS */
+
+  .grid {
+    flex-direction: column;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  /* ADMIN */
+
+  .admin-container {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #222;
+  }
+
+  .admin-main {
+    padding: 20px;
+  }
+
+  .admin-top {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .admin-stats {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .stat-card {
+    width: 100%;
+  }
+
+  /* TOPBAR */
+
+  .topbar {
+    padding: 15px 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .topbar nav a {
+    margin-left: 0;
+  }
+
+  /* FORM */
+
+  .form-container {
+    padding: 25px;
+  }
+
+  input, textarea, select {
+    font-size: 16px; /* evita zoom automático no iPhone */
+  }
+
+  /* TEAM */
+
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
