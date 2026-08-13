@@ -445,7 +445,7 @@ function setupDashboardEvents() {
 }
 
 function switchPanel(panel) {
-  const titles = { overview: 'Visão geral', projects: 'Projetos', playlists: 'Playlists', presaves: 'Pré-save', agenda: 'Agenda', finance: 'Financeiro', history: 'Histórico', trash: 'Lixeira', access: 'Usuários e acessos', security: 'Segurança', settings: 'Configurações' };
+  const titles = { overview: 'Visão geral', projects: 'Projetos', grants: 'Editais', playlists: 'Playlists', presaves: 'Pré-save', agenda: 'Agenda', finance: 'Financeiro', history: 'Histórico', trash: 'Lixeira', access: 'Usuários e acessos', security: 'Segurança', settings: 'Configurações' };
   document.querySelectorAll('[data-admin-tab]').forEach((button) => button.classList.toggle('active', button.dataset.adminTab === panel));
   document.querySelectorAll('[data-panel]').forEach((section) => section.classList.toggle('active', section.dataset.panel === panel));
   document.getElementById('admin-page-title').textContent = titles[panel] || 'Painel';
