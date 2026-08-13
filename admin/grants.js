@@ -147,15 +147,27 @@ async function loadGrantData({ quiet = false } = {}) {
     supabase.from('grant_application_sections').select('*').order('sort_order', { ascending: true }).order('created_at', { ascending: true }),
     supabase.from('grant_application_requirements').select('*').order('sort_order', { ascending: true }).order('created_at', { ascending: true }),
     supabase.from('projects').select('id,title,status,category').is('deleted_at', null).order('title'),
-    supabase.from('admin_profiles').select('user_id,name,email,active').eq('active', true).order('name'),
+    supabase.from('admin_contacts').select('user_id,name,email,active').eq('active', true).order('name'),
   ]);
 
-  const errors = [oppResult, appResult, sectionResult, reqResult, projectResult, profileResult].map((r) => r.error).filter(Boolean);
+  const namedResults = [
+    ['editais', oppResult],
+    ['inscrições', appResult],
+    ['seções', sectionResult],
+    ['requisitos', reqResult],
+    ['projetos', projectResult],
+  ];
+  const errors = namedResults.filter(([, result]) => result.error);
   el('grants-loading').hidden = true;
   if (errors.length) {
-    console.error('Erro ao carregar Editais:', errors);
-    notify('Não foi possível carregar o módulo de Editais. Confira as tabelas e permissões.', 'error');
+    console.error('Erro ao carregar Editais:', errors.map(([source, result]) => ({ source, error: result.error })));
+    const firstSource = errors[0][0];
+    notify(`Não foi possível carregar Editais (${firstSource}). Abra o Console para ver o erro do Supabase.`, 'error');
     return;
+  }
+
+  if (profileResult.error) {
+    console.warn('Diretório de responsáveis indisponível; Editais continuará sem a lista de responsáveis.', profileResult.error);
   }
 
   grantsState.opportunities = oppResult.data || [];
@@ -163,7 +175,7 @@ async function loadGrantData({ quiet = false } = {}) {
   grantsState.sections = sectionResult.data || [];
   grantsState.requirements = reqResult.data || [];
   grantsState.projects = projectResult.data || [];
-  grantsState.profiles = profileResult.data || [];
+  grantsState.profiles = profileResult.error ? [] : (profileResult.data || []);
   populateGrantSelects();
   renderGrantPanel();
 }
