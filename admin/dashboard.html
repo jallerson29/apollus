@@ -10,9 +10,9 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;600;700;800&amp;family=Permanent+Marker&amp;display=swap" rel="stylesheet"/>
-<link href="admin.css?v=20260813-editais-v1-ui1" rel="stylesheet"/>
+<link href="admin.css?v=20260813-editais-v1-ui2" rel="stylesheet"/>
 </head>
-<body class="admin-dashboard-body" data-admin-page="dashboard" data-apollus-version="20260813-editais-v1-ui1">
+<body class="admin-dashboard-body" data-admin-page="dashboard" data-apollus-version="20260813-editais-v1-ui2">
 <div class="admin-boot" id="admin-loading">
 <span class="admin-spinner"></span>
 <p>Carregando painel...</p>
@@ -233,7 +233,7 @@
 </section>
 <section class="admin-panel grants-panel" data-panel="grants" data-requires-permission="projects.view" id="grants-panel">
 <div class="grants-hero">
-<div><p class="admin-kicker">Captação e projetos culturais</p><h2>Editais & inscrições</h2><p>Organize oportunidades, escreva projetos, acompanhe documentos e não perca prazos.</p></div>
+<div><p class="admin-kicker">Oportunidades, inscrições e escrita</p><h2>Captação & projetos culturais</h2><p>Centralize editais, projetos inscritos, prazos e documentação em um fluxo único e fácil de acompanhar.</p></div>
 <button class="admin-btn primary" data-requires-permission="projects.edit" id="grants-new-opportunity" type="button">+ Novo edital</button>
 </div>
 <div class="grants-stats">
@@ -246,9 +246,9 @@
 <label class="search-field"><span class="sr-only">Buscar edital</span><input id="grants-search" placeholder="Buscar edital, organização, área..." type="search"/></label>
 <select aria-label="Filtrar editais por status" id="grants-status-filter"><option value="todos">Todos os status</option><option value="rascunho">Rascunhos</option><option value="aberto">Abertos</option><option value="encerrado">Encerrados</option><option value="cancelado">Cancelados</option><option value="arquivado">Arquivados</option></select>
 </div>
-<div class="grants-intro"><span>✦</span><div><strong>Do edital à execução</strong><p>Uma inscrição aprovada poderá depois se transformar em fonte de recurso, orçamento e prestação de contas sem duplicar o projeto.</p></div></div>
+<div class="grants-intro"><span>✦</span><div><strong>Fluxo conectado</strong><p>Quando uma inscrição for aprovada, ela poderá seguir para recursos, orçamento e prestação de contas sem duplicar o projeto.</p></div></div>
 <div class="admin-list-state" id="grants-loading">Carregando editais...</div>
-<div class="admin-list-state" hidden id="grants-empty">Nenhum edital encontrado.</div>
+<div class="admin-list-state grants-empty-state" hidden id="grants-empty"><span aria-hidden="true">⌕</span><strong>Nenhum edital cadastrado ainda.</strong><p>Cadastre uma oportunidade para acompanhar prazo, inscrição, escrita do projeto, documentos e resultado.</p></div>
 <div class="grants-list" id="grants-list"></div>
 </section>
 <section class="admin-panel finance-panel" data-panel="finance" data-requires-permission="finance.view" id="finance-panel">
