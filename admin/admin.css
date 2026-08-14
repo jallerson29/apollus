@@ -830,6 +830,13 @@ img { max-width: 100%; display: block; }
   border-color: var(--ink);
 }
 
+.admin-btn.grants-accent {
+  background: var(--cyan);
+  color: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 4px 4px 0 var(--purple);
+}
+
 .overview-stat.presave-stat {
   background: linear-gradient(135deg, rgba(189,135,255,.28), rgba(255,225,45,.34));
 }
@@ -3545,4 +3552,195 @@ img { max-width: 100%; display: block; }
     border-bottom: 1px solid var(--line);
   }
   .grant-opportunity-facts span:last-child { padding-bottom: 0; border-bottom: 0; }
+}
+
+
+/* ============================================================
+   EDITAIS V1 UI3 — full width + responsive real
+   ============================================================ */
+.grants-panel {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.grants-panel *,
+.grants-panel *::before,
+.grants-panel *::after {
+  min-width: 0;
+}
+
+.grants-hero {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(16px, 2vw, 30px);
+}
+
+.grants-hero > div {
+  width: 100%;
+  min-width: 0;
+}
+
+.grants-hero p:not(.admin-kicker) {
+  max-width: min(900px, 100%);
+}
+
+.grants-stats {
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grants-toolbar {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 250px);
+}
+
+.grants-toolbar .search-field,
+.grants-toolbar input,
+.grants-toolbar select {
+  min-width: 0;
+}
+
+.grants-intro,
+.grants-list,
+.grants-empty-state {
+  width: 100%;
+}
+
+.grant-opportunity-card {
+  width: 100%;
+  grid-template-columns: minmax(0, 1.8fr) minmax(260px, .72fr);
+}
+
+.grant-opportunity-facts {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grant-opportunity-side,
+.grant-application-chip,
+.grant-requirement-content {
+  min-width: 0;
+}
+
+.grant-application-chip strong,
+.grant-opportunity-card h3,
+.grant-opportunity-card p,
+.grant-opportunity-facts strong,
+.grant-opportunity-facts em {
+  overflow-wrap: anywhere;
+}
+
+@container (max-width: 1080px) {
+  .grants-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .grant-opportunity-card {
+    grid-template-columns: 1fr;
+  }
+
+  .grant-opportunity-side {
+    padding: 16px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .grant-card-actions {
+    justify-content: flex-start;
+  }
+}
+
+@container (max-width: 760px) {
+  .grants-hero {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .grants-hero .admin-btn {
+    width: 100%;
+  }
+
+  .grants-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .grant-opportunity-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .grant-opportunity-facts span {
+    padding: 0 0 10px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .grant-opportunity-facts span:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+@container (max-width: 520px) {
+  .grants-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .grants-hero {
+    padding: 18px 16px;
+  }
+
+  .grants-hero h2 {
+    font-size: clamp(2.1rem, 13vw, 3rem);
+  }
+
+  .grants-stats article {
+    min-height: 92px;
+  }
+
+  .grants-intro {
+    align-items: flex-start;
+  }
+}
+
+/* Em telas grandes/zoom reduzido, use toda a área disponível do painel. */
+@media (min-width: 1400px) {
+  .grants-panel {
+    max-width: none;
+  }
+
+  .grants-hero,
+  .grants-stats,
+  .grants-toolbar,
+  .grants-intro,
+  .grants-list,
+  .grants-empty-state {
+    width: 100%;
+  }
+}
+
+/* Ações rápidas com 5+ itens: distribui melhor sem estourar. */
+@media (max-width: 1180px) {
+  .overview-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .overview-actions > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .overview-actions .admin-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .overview-actions > div {
+    grid-template-columns: 1fr;
+  }
 }

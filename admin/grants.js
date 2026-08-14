@@ -753,6 +753,10 @@ async function toggleRequirement(id, completed) {
 
 function setupGrantEvents() {
   el('grants-new-opportunity')?.addEventListener('click', () => openOpportunityDialog());
+  el('overview-new-grant')?.addEventListener('click', () => {
+    document.querySelector('[data-admin-tab="grants"]')?.click();
+    window.requestAnimationFrame(() => openOpportunityDialog());
+  });
   el('grants-search')?.addEventListener('input', renderGrantList);
   el('grants-status-filter')?.addEventListener('change', renderGrantList);
   el('grant-opportunity-form')?.addEventListener('submit', saveOpportunity);
@@ -794,6 +798,7 @@ function setupGrantEvents() {
     const wasView = grantsState.canView;
     await loadAccess();
     el('grants-new-opportunity').hidden = !grantsState.canEdit;
+    if (el('overview-new-grant')) el('overview-new-grant').hidden = !grantsState.canEdit;
     if (grantsState.canView && !wasView) await loadGrantData();
   });
 }
@@ -803,6 +808,7 @@ async function initializeGrants() {
   const allowed = await loadAccess();
   setupGrantEvents();
   el('grants-new-opportunity').hidden = !grantsState.canEdit;
+  if (el('overview-new-grant')) el('overview-new-grant').hidden = !grantsState.canEdit;
   if (!allowed) {
     el('grants-loading').hidden = true;
     return;
